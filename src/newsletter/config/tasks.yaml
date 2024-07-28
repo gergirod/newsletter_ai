@@ -1,0 +1,83 @@
+research_task:
+  description: >
+    Conduct thorough research on the latest news related to wellness, specifically focusing on the following topics: {topics}. Ensure that the sources are reliable and publish recent news. Do not include articles that are not news material or that are not directly related to the specified wellness topics.
+
+    Follow these guidelines:
+    - Only include articles that are directly related to wellness and the specified topics. Exclude any unrelated news.
+    - Exclude pages that talks about subscribers or subscriptions.
+    - Avoid sources that are not news articles. If the content of the page includes a list of articles or looks like the front page of a website, do not include it.
+    - Summarize the news in a few sentences, making it concise but comprehensive enough for a newsletter.
+    - Include the URL of the article.
+    - Include a minimum of 5 and a maximum of 7 news articles in the list.
+    - When using the Search Tool, keep your search query concise (e.g., "latest news on {topics}").
+
+  expected_output: >
+    A markdown document with the most relevant news stories related to wellness and the specified topics. Each news story should contain the following:
+    - Title of the news
+    - Summary of the news
+    - URL of the article
+
+    Example format:
+    
+    <EXAMPLE>
+      Story 1:
+      - Title: **New Breakthrough in Meditation Techniques for Stress Relief**
+      - **Summary:** Recent studies have shown that advanced meditation techniques can significantly reduce stress levels and improve overall mental health. This breakthrough offers a new approach to managing stress in daily life.
+      - **URL:** [Health News](https://www.healthnews.com/articles/new-breakthrough-in-meditation-techniques)
+    </EXAMPLE>
+
+    IMPORTANT INSTRUCTIONS ABOUT USING TOOLS: When using tools, DO NOT ESCAPE the underscore character "_". For instance, use 'search_query' without escaping the underscore.
+
+edit_task:
+  description: >
+    Given the list of wellness-related news articles for the newsletter, perform the following tasks:
+    
+    - Rewrite the title of each news article to make it more engaging for the readers of the newsletter.
+    - Add a paragraph to each news article explaining why it is important and how it can impact the readers.
+    - Reorder the articles to place the most relevant news at the top based on importance.
+    - Ensure that the news articles are directly related to the specified wellness topics. Remove any off-topic articles.
+    - Verify that the URLs are correct and lead to the correct news article, not to a list of articles or a front page. If a URL is incorrect, request the correct URL from the researcher.
+    - Do not search for additional news articles or change the content of the news articles. Only edit the existing ones.
+    - remember to include all the articles,
+
+  expected_output: >
+    A markdown document with all the news articles for the weekly newsletter. The document should have a title related to the curated wellness stories of the week and include a list of news articles.
+
+    Each article should contain:
+    - Title:
+    - Summary: 
+    - Why this is important:
+    - Source: [URL of the article]
+
+    Example format:
+    <EXAMPLE>
+    Title of the day: Wellness Innovations of the Week
+
+      - **Title:** New Meditation Techniques for Stress Relief
+        **Summary:** Recent studies show that advanced meditation techniques can significantly reduce stress levels and improve mental health. This offers a new approach to stress management.
+        **Why this is important:** This development is crucial as it provides new methods for managing stress, which is a significant concern in today's fast-paced world. These techniques can improve mental well-being and overall health.
+        **Source:** "Health News" by ["Source"](https://www.healthnews.com/articles/new-breakthrough-in-meditation-techniques)
+
+        [... more news articles ...]
+
+    </EXAMPLE>
+
+    IMPORTANT INSTRUCTIONS ABOUT USING TOOLS: When using tools, DO NOT ESCAPE the underscore character "_". For instance, use 'search_query' without escaping the underscore.
+
+
+newsletter_task:
+  description: >
+    Fill the provided HTML template with the given information.
+    
+    Follow these guidelines:
+    - Do not truncate or change the order of the elements.
+    - Do not modify the content of the news articles.
+    - Do not add any additional information.
+    - Include all the provided news stories in the newsletter, even if the template shows only one story. Use the provided format for additional stories.
+    - Include the proper links from the news in the source section of the template.
+
+    {html_template}
+
+  expected_output: >
+    Return ONLY the contents of the HTML template, without any triple quotes like '```', '```html', or any other text. 
+    This output will be saved as an HTML file and sent to the subscribers.
